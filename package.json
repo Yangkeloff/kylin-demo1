@@ -19,6 +19,9 @@
       "index": {
         "entry": "./src/pages/index/index.js"
       },
+      "sign": {
+        "entry": "./src/pages/sign/index.js"
+      },
       "loadmore": {
         "entry": "./src/pages/loadmore/index.js"
       },

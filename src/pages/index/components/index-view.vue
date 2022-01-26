@@ -3,8 +3,8 @@
     <a href="./loadmore.html">loadmore</a>
     <a href="./dialogue.html">dialogue</a>
     <a href="./listview.html">listview</a>
-    <section class="t1 center">
-      test
+    <section class="btn1 center mt20" @click="toSign()">
+      去签名
     </section>
     <input 
       class="ipt_1"
@@ -25,12 +25,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .t1 {
-    background-color: aqua;
-    width: 500 * @rpx;
-    height: 500 * @rpx;
   }
 
   .ipt_1 {
@@ -54,6 +48,9 @@
     methods = {
       checkKeydown(e, value) {
         this.checkValue = value;
+      },
+      toSign() {
+        window.open('./sign.html', '_self');
       }
     }
   }

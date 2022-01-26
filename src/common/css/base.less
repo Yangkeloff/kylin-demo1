@@ -12,8 +12,23 @@ html, body {
   min-height: 100%;
 }
 
+button{
+  /*消除button的默认样式*/
+  /*这种写法是对所有的button标签同时生效*/
+  margin: 0px;
+  padding: 0px;
+  /*自定义边框*/
+  border: 0px;
+  /*消除默认点击蓝色边框效果*/
+  outline: none;
+}
+
 .flex {
   display: flex;
+}
+.col {
+  display: flex;
+  flex-direction: column;
 }
 .jst-center {
   justify-content: center;
@@ -28,4 +43,22 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.mt20 {
+  margin-top: 20 * @rpx;
+}
+
+.mb20 {
+  margin-bottom: 20 * @rpx;
+}
+
+.btn1 {
+  color: #409eff;
+  background: #ecf5ff;
+  border-color: #b3d8ff;
+  border-radius: 38 * @rpx;
+  width: 250 * @rpx;
+  height: 80 * @rpx;
+  font-size: 30 * @rpx;
 }
