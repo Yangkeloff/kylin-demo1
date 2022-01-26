@@ -13,6 +13,8 @@
       v-model="count"
       @keydown="checkKeydown($event, count)"
       @input="count=/^\d+\.?\d{0,2}$/.test(count)||count == '' ? count : count=checkValue">
+    <!-- 最大限制6位 -->
+    <input class="ipt_1 mt20" type="number" oninput="if(value.length>6) value=value.slice(0,6)" />
   </div>
 </template>
 
@@ -47,10 +49,11 @@
     }
     methods = {
       checkKeydown(e, value) {
+        // console.log(value);
         this.checkValue = value;
       },
       toSign() {
-        window.open('./sign.html', '_self');
+        window.open(`./sign.html`, '_self');
       }
     }
   }
