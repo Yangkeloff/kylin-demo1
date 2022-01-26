@@ -1,14 +1,13 @@
 <template>
   <div id="app">
-    <p class="title">Sign Page</p>
-    <section>
-      <canvas id="canvas" width="300" height="150"></canvas>
-      <div class="btn flex">
-        <button class="btn1 back-btn" @click="toClear()">清除</button>
-        <button class="btn1 back-btn" @click="toSave()">保存</button>
-      </div>
-    </section>
-    <button class="btn1 back-btn" @click="back()">返回</button>
+    <canvas id="canvas" width="400" height="300"></canvas>
+    <div class="btn col">
+      <section class="flex">
+        <button class="btn1" @click="toClear()">清除</button>
+        <button class="btn1" @click="toSave()">保存</button>
+      </section>
+      <button class="btn1 back_btn" @click="back()">返回</button>
+    </div>
   </div>
 </template>
 
@@ -25,16 +24,23 @@
   .title {
     font-size: 33 * @rpx;
   }
-  .back-btn {
-    align-self: center;
+  .btn {
     margin: auto 0 40 * @rpx;
-  }
-  canvas {
-    border: 2px dashed #cccccc;
   }
   .btn button:nth-child(1) {
     margin-right: 60 * @rpx;
   }
+  .back_btn {
+    align-self: center;
+    margin-top: 40 * @rpx;
+  }
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: 2px dashed #cccccc;
+  }
+  
 </style>
 
 // <dependency component="loadmore" src="common/components/loadmore.vue" lazy />
@@ -60,7 +66,7 @@
           this.ctx.lineCap = 'round';
           this.ctx.fillStyle = background;
           this.ctx.lineWidth = 2;
-          this.ctx.fillRect(0, 0, 350, 150);
+          this.ctx.fillRect(0, 0, 400, 300);
 
           this.canvas.addEventListener('touchstart', (e) => {
             console.log(123, e);
@@ -75,7 +81,7 @@
         }
       },
       toClear() {
-        this.ctx.clearRect(0, 0, 300, 150);
+        this.ctx.clearRect(0, 0, 400, 300);
       },
       toSave() {
         let base64Img = this.canvas.toDataURL();
