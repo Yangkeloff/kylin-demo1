@@ -10,7 +10,7 @@
     </div>
   </div>
 </template>
-
+<dependency component="{ Toast }" src="@alipay/antui-vue" ></dependency>
 <style lang="less" rel="stylesheet/less" >
   @import '~common/css/base.less';
 
@@ -43,16 +43,15 @@
   
 </style>
 
-// <dependency component="loadmore" src="common/components/loadmore.vue" lazy />
-
 <script type="text/javascript">
   import { Component } from '@ali/kylin-framework';
-
+  import { Toast } from '@alipay/antui-vue';
   @Component
   export default class SignView {
     data = {
       ctx: null,
-      canvas: null
+      canvas: null,
+      count: 0
     }
     mounted() {
       this.initPage();
@@ -69,7 +68,8 @@
           this.ctx.fillRect(0, 0, 400, 300);
 
           this.canvas.addEventListener('touchstart', (e) => {
-            console.log(123, e);
+            this.count++;
+            console.log(this.count, e);
             this.ctx.beginPath();
             this.ctx.moveTo(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
           });
@@ -82,8 +82,17 @@
       },
       toClear() {
         this.ctx.clearRect(0, 0, 400, 300);
+        this.count = 0;
       },
       toSave() {
+        if (this.count < 5) {
+          console.log(false);
+          Toast.show({
+            type: 'text',
+            text: '签名不可少于5笔'
+          });
+          return;
+        }
         let base64Img = this.canvas.toDataURL();
         console.log(123, base64Img);
       },

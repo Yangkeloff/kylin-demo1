@@ -19,7 +19,7 @@
 }
 </style>
 <dependency component="Child" src="./child.vue" lazy />
-
+<dependency component="{ Notice }" src="@alipay/antui-vue" ></dependency>
 <script>
   import { Component } from '@ali/kylin-framework';
 
