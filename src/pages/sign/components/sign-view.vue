@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <canvas id="canvas" width="400" height="300"></canvas>
+    <canvas id="canvas" width="350" height="500"></canvas>
     <div class="btn col">
       <section class="flex">
         <button class="btn1" @click="toClear()">清除</button>
@@ -36,8 +36,8 @@
   }
   canvas {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 50px;
+    left: 30px;
     border: 2px dashed #cccccc;
   }
   
@@ -61,27 +61,29 @@
         this.canvas = document.getElementById('canvas');
         if (this.canvas.getContext) {
           this.ctx = this.canvas.getContext('2d');
-          let background = '#ffffff';
+          let background = '#cccfff';
           this.ctx.lineCap = 'round';
           this.ctx.fillStyle = background;
           this.ctx.lineWidth = 2;
-          this.ctx.fillRect(0, 0, 400, 300);
+          this.ctx.fillRect(0, 0, 350, 500);
 
           this.canvas.addEventListener('touchstart', (e) => {
             this.count++;
             console.log(this.count, e);
             this.ctx.beginPath();
-            this.ctx.moveTo(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
+            this.ctx.moveTo(e.changedTouches[0].pageX - 30, e.changedTouches[0].pageY - 50);
           });
 
           this.canvas.addEventListener('touchmove', (e) => {
-            this.ctx.lineTo(e.changedTouches[0].pageX, e.changedTouches[0].pageY);
+            this.ctx.lineTo(e.changedTouches[0].pageX - 30, e.changedTouches[0].pageY - 50);
             this.ctx.stroke();
           });
         }
       },
       toClear() {
-        this.ctx.clearRect(0, 0, 400, 300);
+        this.ctx.clearRect(0, 0, 350, 500);
+        this.ctx.fillStyle = '#cccfff';
+        this.ctx.fillRect(0, 0, 350, 500);
         this.count = 0;
       },
       toSave() {
