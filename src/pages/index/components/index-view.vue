@@ -18,13 +18,7 @@
       @input="count=/^\d+\.?\d{0,2}$/.test(count)||count == '' ? count : count=checkValue">
     <!-- 最大限制6位 -->
     <input class="ipt_1 mt20" type="number" oninput="if(value.length>6) value=value.slice(0,6)" />
-    <!-- <AButton >主按钮</AButton>
-    <AButton type="white">次按钮</AButton>
-    <AButton disabled>按钮不可点</AButton>
-
-    <AButton href="#">a标签 主按钮</AButton>
-    <AButton href="#" type="white">a标签 次按钮</AButton>
-    <AButton href="#" disabled>a标签 按钮不可点</AButton> -->
+    <AButton style="margin-top: 30px" :loading="isLoading" type="warn" @click="fail()" >交易失败</AButton>
   </div>
 </template>
 
@@ -45,16 +39,17 @@
     margin-top: 20 * @rpx;
   }
 </style>
-
+<dependency component="{ PageResult, AButton }" src="@alipay/antui-vue" ></dependency>
 <dependency component="loadmore" src="common/components/loadmore.vue" lazy />
 <script type="text/javascript">
   import { Component } from '@ali/kylin-framework';
-  // import { AButton } from '@alipay/antui-vue';
+  import { PageResult, AButton } from '@alipay/antui-vue';
   @Component
   export default class LoadmoreView {
     data = {
       count: '',
-      checkValue: ''
+      checkValue: '',
+      isLoading: false
     }
     methods = {
       checkKeydown(e, value) {
@@ -63,6 +58,17 @@
       },
       to(name) {
         window.open(`./${name}.html`, '_self');
+      },
+      fail() {
+        this.isLoading = true;
+        let _this = this;
+        setTimeout(() => {
+          _this.isLoading = false;
+          PageResult.show({
+            type: 'error',
+            text: '错误!'
+          });
+        }, 1500);
       }
     }
   }

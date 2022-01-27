@@ -4,6 +4,8 @@
       Hello {{name}}
     </section>
     <Child :prop_1 = "prop_1"></Child>
+    <div style="padding: 10px;">
+    </div>
   </div>
 </template>
 
@@ -19,7 +21,6 @@
 }
 </style>
 <dependency component="Child" src="./child.vue" lazy />
-<dependency component="{ Notice }" src="@alipay/antui-vue" ></dependency>
 <script>
   import { Component } from '@ali/kylin-framework';
 
