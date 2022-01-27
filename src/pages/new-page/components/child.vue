@@ -1,5 +1,5 @@
 <template>
-  <div class="child_wrap col">
+  <div class="child_wrap col aln-center">
     <section style="color: #333;">Hello {{name}}</section>
     <section style="color: #237fd4;">props测试:{{prop_1}}</section>
     <button class="btn1 mt20" @click="back()">返回</button>
