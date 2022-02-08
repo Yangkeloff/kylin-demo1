@@ -18,7 +18,7 @@
       @input="count=/^\d+\.?\d{0,2}$/.test(count)||count == '' ? count : count=checkValue">
     <!-- 最大限制6位 -->
     <input class="ipt_1 mt20" type="number" oninput="if(value.length>6) value=value.slice(0,6)" />
-    <AButton style="margin-top: 30px" :loading="isLoading" type="warn" @click="fail()" >交易失败</AButton>
+    <AButton style="margin-top: 30px" :loading="isLoading" type="blue" @click="fail()" >交易</AButton>
   </div>
 </template>
 
@@ -61,12 +61,19 @@
       },
       fail() {
         this.isLoading = true;
-        let _this = this;
+        const _this = this;
+        const btns = [{
+          text: '返回',
+          click: () => {
+            window.location.reload();
+          }
+        }];
         setTimeout(() => {
           _this.isLoading = false;
           PageResult.show({
             type: 'error',
-            text: '错误!'
+            content: '交易失败',
+            btns
           });
         }, 1500);
       }

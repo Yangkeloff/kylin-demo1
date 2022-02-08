@@ -2,6 +2,7 @@
   <div class="child_wrap col aln-center">
     <section style="color: #333;">Hello {{name}}</section>
     <section style="color: #237fd4;">props测试:{{prop_1}}</section>
+    <AButton class="mt20" @click="toParent()">子传父测试</AButton>
     <AButton class="mt20" @click="back()">返回</AButton>
   </div>
 </template>
@@ -30,6 +31,9 @@
     methods = {
       back() {
         window.history.go(-1);
+      },
+      toParent() {
+        this.$emit('test', {a: 'aaa', b: 'bbb'});
       }
     }
   }
