@@ -11,7 +11,8 @@
     </section>
     <input 
       class="ipt_1"
-      placeholder="限制小数点后两位" 
+      placeholder="限制小数点后两位"
+      maxlength="10"
       type="text" 
       v-model="count"
       @keydown="checkKeydown($event, count)"
